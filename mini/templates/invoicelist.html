@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice List</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            color: #333;
+            font-family: Arial, sans-serif;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 0 auto; /* center the table */
+        }
+
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: center;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #333;
+            color: #f2f2f2;
+        }
+
+        tr:nth-child(even) {
+            background-color: #ddd;
+        }
+
+        tr:hover {
+            background-color: #bbb;
+        }
+        h1 {
+        text-align: center;
+        }
+        .btn {
+        background-color: #333; /* same as th background */
+        color: #f2f2f2; /* same as th color */
+        border: none;
+        padding: 10px 20px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+        background-color: #555;
+        }
+
+        .center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        height: auto;
+        margin-top: 20px;
+        }
+        .btn-bottom {
+        margin-bottom: 20px;
+    }
+</style>
+</head>
+<body>
+    {% if messages %}
+        <script>
+            alert("{{ messages }}");
+        </script>
+    {% endif %}
+    <h1>Invoice List</h1>
+    <div class="center">
+
+        <button class="btn btn-bottom" onclick="window.location.href='add-invoice/' ">add invoice</button>
+        
+        <button class="btn" onclick="window.location.href='/add-customer/' ">add customer</button>
+        
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Invoice ID</th>
+                <th>Customer ID</th>
+                <th>Invoice Date</th>
+                <th>Due Date</th>
+                <th>Total Amount</th>
+                <th>Status</th>
+                <th>Payment ID</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for inv in invoice %}
+                <tr>
+                    <td><a href="/invoice-items/{{inv.invoice_id}}">{{ inv.invoice_id }}</a></td>
+                    <td><a href="/customer-details/{{inv.cust_id }}">{{ inv.cust_id }}</a></td>
+                    <td>{{ inv.invoice_date }}</td>
+                    <td>{{ inv.due_date }}</td>
+                    <td>{{ inv.total_amt }}</td>
+                    <td>{{ inv.status }}</td>
+                    <td><a href="/pay-id/{{inv.pay_id}}">{{ inv.pay_id }}</a></td>
+                    <!-- <td>
+                        <a href="/customer-details/{{inv.cust_id }}">Customer Details
+                    </td> -->
+                    {% if user.is_superuser %}
+                        <td>
+                            <a href="/edit-invoice/{{ inv.invoice_id }}/">
+                                Edit
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/delete-invoice/{{inv.invoice_id}}/">Delete</a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <button class="btn" onclick="window.location.href='/' ">logout</button>
+</body>
+</html>

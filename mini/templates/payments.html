@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payments</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            color: #333;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+        }
+    
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+    
+        table {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            width: 80%;
+            border-collapse: collapse;
+        }
+    
+        table th, table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+    
+        table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1>Payments</h1>
+    <table>
+        <thead>
+            <tr>
+                 
+                <th>Payments id</th>
+                <th>Bank_Name</th>
+                <th>Account</th>
+                <th>IFSC</th>
+                              
+            </tr>
+        </thead>
+        <tbody>
+            {% for gg in payments %}
+            <tr>
+              
+                <td>{{ gg.pay_id }}</td>
+                <td>{{ gg.bank_name }}</td>
+                <td>{{ gg.account_no }}</td>
+                <td>{{ gg.isfc }}</td>    
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!-- create_invoice.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Invoice</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            color: #333;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form label {
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        form input[type="submit"] {
+            background-color: #333;
+            color: #f2f2f2;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        form input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        button {
+            background-color: #333;
+            color: #f2f2f2;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #555;
+        }
+    </style>    
+</head>
+
+<body>
+
+    <h2>Create Invoice</h2>
+    
+
+    {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+    {% endif %}
+    
+    <form method="post" action="{% url 'add_invoice' %}">
+        {% csrf_token %}
+        <label for="invoice_id">Invoice ID:</label>
+        <input type="text" name="invoice_id" required><br>
+
+        <label for="cust_id">Customer ID:</label>
+        <input type="text" name="cust_id" required><br>
+
+        <label for="invoice_date">Invoice Date:</label>
+        <input type="text" name="invoice_date" required><br>
+
+        <label for="due_date">Due Date:</label>
+        <input type="text" name="due_date" required><br>
+
+        <label for="total_amt">Total Amount:</label>
+        <input type="text" name="total_amt" required><br>
+
+        <label for="status">Status:</label>
+        <input type="text" name="status" required><br>
+
+        <label for="pay_id">Payment ID:</label>
+        <input type="text" name="pay_id" required><br>
+
+        <input type="submit" value="Submit">
+        
+    </form>
+    <button onclick="window.location.href='/invoice-list/' ">invoice list</button>
+</body>
+</html>

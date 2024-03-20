@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invoice Products</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            color: #333;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            flex-direction: column;
+        }
+    
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+    
+        table {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+            width: 80%;
+            border-collapse: collapse;
+        }
+    
+        table th, table td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+    
+        table th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+    
+        table a {
+            display: inline-block;
+            background-color: #333;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+    
+        table a:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <h1>Invoice Products</h1>
+    
+    <table >
+        <thead>
+            <tr>
+                <th>Invoice ID</th>
+                <th>Product Name</th>
+                <th>Price</th>
+                <th>Product ID</th>
+                <th>Edit</th>
+                <th>Delete</th>                
+            </tr>
+        </thead>
+        <tbody>
+            {% for ro in products %}
+                <tr>
+                    <!-- <td>{{pro.invoice_id}}</td>
+                    <td>{{pro.item_name}}</td>
+                    <td>{{pro.item_price}}</td>
+                    <td>{{pro.id}}</td> -->
+                    <td>{{ro.invoice_id}}</td>
+                    <td>{{ro.item_name}}</td>
+                    <td>{{ro.item_price}}</td>
+                    <td>{{ro.id}}</td>
+                    {% if user.is_superuser %}
+                        <td>
+                            <a href="/edit-item/{{ro.id}}/">
+                                Edit
+                            </a>
+                        </td>
+                        <td>
+                            <a href="/delete-item/{{ro.id}}/">Delete</a>
+                        </td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+            
+        </tbody>
+    </table>
+    {% if inv_id %} 
+    <a href="/add-item/{{inv_id}}/" >Add Item</a>
+    {% endif %}
+</body>
+</html>
