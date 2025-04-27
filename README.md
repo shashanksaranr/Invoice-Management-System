@@ -37,55 +37,71 @@ Postman (for API testing)
 # 🏗️ Project Structure
 
 invoice-management-system/
+
 ├── backend/
+
 │   ├── manage.py
+
 │   ├── invoice_app/
+
 │   │   ├── models.py
+
 │   │   ├── views.py
+
 │   │   ├── urls.py
+
 │   │   ├── serializers.py (if APIs are used)
+
 │   │   ├── templates/
+
 │   │   └── static/
+
 │   └── settings.py
+
 ├── README.md
+
 ├── requirements.txt
+
 └── database/
-    └── db.sqlite3
+
+    └── db.sqlite3 
 
 
 # ⚙️ Installation and Setup
 
 1. Clone the repository
 
-git clone https://github.com/your-username/invoice-management-system.git
+    git clone https://github.com/your-username/invoice-management-system.git
 
-cd invoice-management-system
+    cd invoice-management-system
 
 2. Create a virtual environment
 
-python -m venv venv
+    python -m venv venv
 
-source venv/bin/activate   # For Linux/Mac
+    source venv/bin/activate   # For Linux/Mac
 
-venv\Scripts\activate      # For Windows
+    venv\Scripts\activate      # For Windows
 
 3. Install dependencies
    
-pip install -r requirements.txt
+    pip install -r requirements.txt
 
 4. Apply migrations
    
-python manage.py makemigrations
+    python manage.py makemigrations
 
-python manage.py migrate
+    python manage.py migrate
 
 5. Run the server
    
-python manage.py runserver
+    python manage.py runserver
 
-6. Access the application Open http://127.0.0.1:8000 in your browser.
+6. Access the application
+   
+    Open http://127.0.0.1:8000 in your browser.
 
-7. Testing
+8. Testing
 
-python manage.py test
+    python manage.py test
 
