@@ -71,7 +71,7 @@ invoice-management-system/
 
 1. Clone the repository
 
-    git clone https://github.com/your-username/invoice-management-system.git
+    git clone https://github.com/shashanksaranr/invoice-management-system.git
 
     cd invoice-management-system
 
@@ -104,4 +104,11 @@ invoice-management-system/
 8. Testing
 
     python manage.py test
+
+
+🙋‍♂️ Author
+
+SHASHANKSARAN R
+
+GitHub: @shashanksaranr
 
